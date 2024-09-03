@@ -28,15 +28,15 @@
   <body>
     <div id="cesiumContainer"></div>
     <script>
-      var viewer = new Cesium.Viewer("cesiumContainer");
+      var viewer = new Cesium.Viewer("cesiumContainer" , {
             terrainProvider: Cesium.createWorldTerrain()
-          });
+      });
 
       var tileset1 = new Cesium.Cesium3DTileset({ url: './sample/chino/tileset.json'});
       tileset1.readyPromise.then(function(tileset1) {
         viewer.scene.primitives.add(tileset1);
         tileset.style = new Cesium.Cesium3DTileStyle({
-            color: {
+          color: {
             conditions:[
               ["Number(${地上階数}) >= 4","rgba(255, 0, 0,0.5)"],
               ["Number(${地上階数}) >= 3","rgba(0, 255, 0,0.5)"],
@@ -46,6 +46,7 @@
             },
           markerSymbol: '?'
         });
+
         viewer.camera.flyTo({
           destination: Cesium.Cartesian3.fromDegrees(138.2, 35.90, 10000),
           orientation : {
