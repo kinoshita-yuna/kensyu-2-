@@ -28,8 +28,6 @@
   <body>
     <div id="cesiumContainer"></div>
     <script>
-      (async function () {
-        try {
           var viewer = new Cesium.Viewer("cesiumContainer", {
             terrainProvider: Cesium.createWorldTerrain()
           });
@@ -48,6 +46,7 @@
             },
             markerSymbol: '?'
           });
+
           viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(138.2, 35.90, 10000),
             orientation : {
@@ -59,7 +58,6 @@
         }).otherwise(function (error) {
           console.log(error);
         }
-      })();
     </script>
   </body>
 </html>
