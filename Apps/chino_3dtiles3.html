@@ -28,7 +28,6 @@
   <body>
     <div id="cesiumContainer"></div>
     <script>
-        try {
           vaar viewer = new Cesium.Viewer("cesiumContainer", {
             terrainProvider: await Cesium.createWorldTerrain()
           });
@@ -56,8 +55,8 @@
               roll : 0.0
             }
           });
-        } catch (error) {
-          console.log(`Failed to load tileset: ${error}`);
+        }).otherwise(function(error) {
+          console.log(error);
         }
       })();
     </script>
