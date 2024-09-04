@@ -28,8 +28,6 @@
   <body>
     <div id="cesiumContainer"></div>
     <script>
-      (async function () {
-        try {
           var viewer = new Cesium.Viewer("cesiumContainer", {
             terrainProvider: await Cesium.createWorldTerrain()
           });
