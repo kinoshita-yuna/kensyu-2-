@@ -30,10 +30,12 @@
     <script>
       (async function () {
         try {
-          const viewer = new Cesium.Viewer("cesiumContainer", {
-            terrainProvider: await Cesium.createWorldTerrainAsync()
+          var viewer = new Cesium.Viewer("cesiumContainer", {
+            terrainProvider: await Cesium.createWorldTerrain()
           });
-          const tileset = await Cesium.Cesium3DTileset.fromUrl('./sample/chino/tileset.json');
+
+          var tileset = new Cesium.Cesium3DTileset.fromUrl('./sample/chino/tileset.json');
+          tileset.readyPromise.then(function(tileset1) {
           viewer.scene.primitives.add(tileset);
           tileset.style = new Cesium.Cesium3DTileStyle({
             color: {
